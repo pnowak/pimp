@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang=pl>
+<head>
+    <meta charset=utf-8>
+    <title>Pimp my rect</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <header>
+        <form action="/" method="get" id="form" class="form">
+            <div id="control">
+                <div class="opts">
+                  <label>background-color: </label><input value="" type="color" class="color" autocomplete='off'>
+                </div>
+                <div class="opts">
+                    <label>border: </label><input value="1" class="border" autocomplete='off'>
+                </div>
+                <div class="opts">
+                    <label>width: </label><input value="100" class="width" autocomplete='off'>
+                </div>
+                <div class="opts">
+                    <label>height: </label><input value="100" class="height" autocomplete='off'>
+                </div>
+            </div>
+            <button type="button" class="place" id="save" name="button">Save</button>
+        </form>
+    </header>
+    <section class="wrap">
+        <div id="output" class="output"></div>
+        <section class="gallery">
+            <ul id="output"></ul>
+        </section>
+    </section>
+
+    <script src="output.js" type="text/javascript"></script>
+
+</body>
+
+</html>
