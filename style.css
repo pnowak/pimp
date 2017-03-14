@@ -37,13 +37,14 @@ header {
 }
 
 .gallery  {  
-    width: 60%;
+    width: 70%;
     float: right;
     margin: 0 1%;
 }
 
 .output { 
     width: 20%;
+    float: left;
     margin: 0 2%;
 }
 
@@ -52,8 +53,10 @@ header {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     border: none;
+    padding: 1px 5px;
     color: #FFFAF0;
     background-color: #e2311d;
+    cursor: pointer;
 }
 
 fieldset { 
