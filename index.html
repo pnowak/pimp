@@ -7,29 +7,29 @@
     <link href='style.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <header>
-        <form action="/" method="get" id="form" class="form">
-            <div id="controls">
-                <div class="opts">
-                  <label>background-color: </label><input type="color" value="" autocomplete='off' name="backgroundColor">
-                </div>
-                <div class="opts">
-                    <label>border-radius: </label><input type="range" min="0" max="99" step="1" value="0" autocomplete='off' name="borderRadius">
-                </div>
-                <div class="opts">
-                    <label>width: </label><input value="100" autocomplete='off' name="width">
-                </div>
-                <div class="opts">
-                    <label>height: </label><input value="100" autocomplete='off' name="height">
-                </div>
-            </div>
-            <button type="button" class="place" id="save" name="button">Save</button>
-        </form>
-    </header>
     <section class="wrap">
-        <div class="output">
-            <div id="output" style="width: 100px; height: 100px; background-color: #000000; border-radius: 0;"></div>
-        </div>
+        <section class="editor">
+            <form action="/" method="get" id="form" class="form">
+                <div id="controls">
+                    <div class="opts">
+                      <label>background-color: </label><input type="color" value="" autocomplete='off' name="backgroundColor">
+                    </div>
+                    <div class="opts">
+                        <label>border-radius: </label><input type="range" min="0" max="99" step="1" value="0" autocomplete='off' name="borderRadius">
+                    </div>
+                    <div class="opts">
+                        <label>width: </label><input value="100" autocomplete='off' name="width">
+                    </div>
+                    <div class="opts">
+                        <label>height: </label><input value="100" autocomplete='off' name="height">
+                    </div>
+                </div>
+                <button type="button" class="place" id="save" name="button">Save</button>
+            </form>
+            <div class="output">
+                <div id="output" style="width: 100px; height: 100px; background-color: #000000; border-radius: 0;"></div>
+            </div>
+        </section>
         <section class="gallery">
             <ul id="listGallery"></ul>
         </section>
