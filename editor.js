@@ -21,29 +21,43 @@ class Editor {
 
         li.appendChild(div);
         gallery.insertBefore(li, gallery.firstChild);
-
         li.insertAdjacentHTML('afterbegin', '<button class="close">x</button>');
 
         localStorage.setItem(div.id, div.style.cssText);
+
+        this.resetStyle();
     }
 
     closeDiv(e) {
-        const src = e.target;
-        const div = src.nextSibling;
-        const parent = src.parentNode;
+        const target = e.target;
+        const div = target.nextSibling;
+        const parent = target.parentNode;
 
-        if (src.nodeName.toLowerCase() === "button") {
+        if (target.nodeName.toLowerCase() === "button") {
             localStorage.removeItem(div.id);
             parent.parentNode.removeChild(parent);
         }
     }
 
-    setValue(e) {
+    setStyle(e) {
         const style = this.get('output').style;
-        let target = e.target;
+        const target = e.target;
         let value = parseInt(target.value) ? target.value + 'px' : target.value;
 
         style[target.name] = value;
+    }
+
+    resetStyle() {
+        const options  = Array.from(document.querySelectorAll('.opts'));
+        let style = this.get('output').style;
+
+        options.forEach(function(item, index) {
+            let defaultValue = item.children[1].defaultValue;
+            let name = item.children[1].name;
+
+            item.children[1].value = item.children[1].defaultValue;
+            style[name] = parseInt(defaultValue) ? defaultValue + 'px' : defaultValue;
+        });
     }
 
     getLocal() {
@@ -60,8 +74,8 @@ const saveButton = editor.get('save');
 const controlInputs = editor.get('controls');
 const gallery = editor.get('listGallery');
 
-controlInputs.addEventListener('input', (e) => { editor.setValue(e) }, false);
+controlInputs.addEventListener('input', (e) => { editor.setStyle(e) }, false);
 saveButton.addEventListener('click', () => { editor.createDiv() }, false);
-gallery.addEventListener('click', editor.closeDiv, false);
+gallery.addEventListener('click', (e) => { editor.closeDiv(e) }, false);
 
 document.addEventListener('DOMContentLoaded', () => { editor.getLocal() }, false);
