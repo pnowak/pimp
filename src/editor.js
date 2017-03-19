@@ -1,18 +1,16 @@
 'use strict';
 
+import get from './helpers/get';
+
 class Editor {
 
     constructor() {
         this.nextId = 1;
     }
 
-    get(id) {
-        return document.getElementById(id);
-    }
-
     createDiv(value = this.nextId++, style) {
-        const gallery = document.getElementById('listGallery');
-        const output = document.getElementById('output');
+        const gallery = get('listGallery');
+        const output = get('output');
         const li = document.createElement('li');
         const div = document.createElement('div');
 
@@ -24,8 +22,6 @@ class Editor {
         li.insertAdjacentHTML('afterbegin', '<button class="close">x</button>');
 
         localStorage.setItem(div.id, div.style.cssText);
-
-        this.resetStyle();
     }
 
     closeDiv(e) {
@@ -40,7 +36,7 @@ class Editor {
     }
 
     setStyle(e) {
-        const style = this.get('output').style;
+        const style = get('output').style;
         const target = e.target;
         let value = parseInt(target.value) ? target.value + 'px' : target.value;
 
@@ -49,7 +45,7 @@ class Editor {
 
     resetStyle() {
         const options  = Array.from(document.querySelectorAll('.opts'));
-        let style = this.get('output').style;
+        let style = get('output').style;
 
         options.forEach(function(item, index) {
             let defaultValue = item.children[1].defaultValue;
@@ -68,14 +64,4 @@ class Editor {
     }
 };
 
-const editor = new Editor();
-
-const saveButton = editor.get('save');
-const controlInputs = editor.get('controls');
-const gallery = editor.get('listGallery');
-
-controlInputs.addEventListener('input', (e) => { editor.setStyle(e) }, false);
-saveButton.addEventListener('click', () => { editor.createDiv() }, false);
-gallery.addEventListener('click', (e) => { editor.closeDiv(e) }, false);
-
-document.addEventListener('DOMContentLoaded', () => { editor.getLocal() }, false);
+export default Editor;
