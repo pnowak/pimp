@@ -63,17 +63,19 @@
 	var gallery = (0, _get2.default)('listGallery');
 
 	controlInputs.addEventListener('input', function (e) {
-	  editor.setStyle(e);
+		editor.setStyle(e);
 	}, false);
+
 	saveButton.addEventListener('click', function () {
-	  editor.createDiv(), editor.resetStyle();
+		editor.createDiv(), editor.resetStyle();
 	}, false);
+
 	gallery.addEventListener('click', function (e) {
-	  editor.closeDiv(e);
+		editor.closeDiv(e);
 	}, false);
 
 	document.addEventListener('DOMContentLoaded', function () {
-	  editor.getLocal();
+		editor.getDataFromLocal();
 	}, false);
 
 /***/ },
@@ -107,6 +109,10 @@
 
 	var _get2 = _interopRequireDefault(_get);
 
+	var _uniqueId = __webpack_require__(3);
+
+	var _uniqueId2 = _interopRequireDefault(_uniqueId);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -114,14 +120,12 @@
 	var Editor = function () {
 	    function Editor() {
 	        _classCallCheck(this, Editor);
-
-	        this.nextId = 1;
 	    }
 
 	    _createClass(Editor, [{
 	        key: 'createDiv',
 	        value: function createDiv() {
-	            var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.nextId++;
+	            var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (0, _uniqueId2.default)();
 	            var style = arguments[1];
 
 	            var gallery = (0, _get2.default)('listGallery');
@@ -174,11 +178,14 @@
 	            });
 	        }
 	    }, {
-	        key: 'getLocal',
-	        value: function getLocal() {
+	        key: 'getDataFromLocal',
+	        value: function getDataFromLocal() {
 	            var divs = localStorage;
+
 	            for (var div in divs) {
-	                this.createDiv(div.id, divs[div]);
+	                if (divs.hasOwnProperty(div)) {
+	                    this.createDiv(div, divs[div]);
+	                }
 	            }
 	        }
 	    }]);
@@ -189,6 +196,21 @@
 	;
 
 	exports.default = Editor;
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	function uniqueId() {
+	    return 'ID_' + Math.random().toString(36).substr(2, 16);
+	}
+
+	exports.default = uniqueId;
 
 /***/ }
 /******/ ]);

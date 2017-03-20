@@ -1,14 +1,11 @@
 'use strict';
 
 import get from './helpers/get';
+import uniqueId from './helpers/uniqueId';
 
 class Editor {
 
-    constructor() {
-        this.nextId = 1;
-    }
-
-    createDiv(value = this.nextId++, style) {
+    createDiv(value = uniqueId(), style) {
         const gallery = get('listGallery');
         const output = get('output');
         const li = document.createElement('li');
@@ -56,10 +53,13 @@ class Editor {
         });
     }
 
-    getLocal() {
+    getDataFromLocal() {
         let divs = localStorage;
+
         for (let div in divs) {
-            this.createDiv(div.id, divs[div]);
+            if (divs.hasOwnProperty(div)) {
+                this.createDiv(div, divs[div]);
+            }
         }
     }
 };

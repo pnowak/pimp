@@ -10,7 +10,12 @@ const controlInputs = get('controls');
 const gallery = get('listGallery');
 
 controlInputs.addEventListener('input', (e) => { editor.setStyle(e) }, false);
-saveButton.addEventListener('click', () => { editor.createDiv(), editor.resetStyle() }, false);
+
+saveButton.addEventListener('click', () => { 
+	editor.createDiv(), 
+	editor.resetStyle() }, 
+false);
+
 gallery.addEventListener('click', (e) => { editor.closeDiv(e) }, false);
 
-document.addEventListener('DOMContentLoaded', () => { editor.getLocal() }, false);
+document.addEventListener('DOMContentLoaded', () => { editor.getDataFromLocal() }, false);
