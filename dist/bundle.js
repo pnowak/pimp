@@ -50,29 +50,40 @@
 
 	var _get2 = _interopRequireDefault(_get);
 
-	var _editor = __webpack_require__(2);
+	var _debounce = __webpack_require__(2);
+
+	var _debounce2 = _interopRequireDefault(_debounce);
+
+	var _editor = __webpack_require__(3);
 
 	var _editor2 = _interopRequireDefault(_editor);
+
+	var _filter = __webpack_require__(5);
+
+	var _filter2 = _interopRequireDefault(_filter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var editor = new _editor2.default();
+	var filter = new _filter2.default();
 
 	var saveButton = (0, _get2.default)('save');
 	var controlInputs = (0, _get2.default)('controls');
 	var gallery = (0, _get2.default)('listGallery');
+	var filterInput = (0, _get2.default)('filter');
 
 	controlInputs.addEventListener('input', function (e) {
 		editor.setStyle(e);
 	}, false);
-
 	saveButton.addEventListener('click', function () {
 		editor.createDiv(), editor.resetStyle();
 	}, false);
-
 	gallery.addEventListener('click', function (e) {
 		editor.closeDiv(e);
 	}, false);
+	filterInput.addEventListener('input', (0, _debounce2.default)(function () {
+		return filter.getValue();
+	}, 2000));
 
 	document.addEventListener('DOMContentLoaded', function () {
 		editor.getDataFromLocal();
@@ -95,6 +106,29 @@
 
 /***/ },
 /* 2 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	function debounce(func, delay) {
+	    var inDebounce = undefined;
+	    return function () {
+	        var context = this,
+	            args = arguments;
+	        clearTimeout(inDebounce);
+	        return inDebounce = setTimeout(function () {
+	            return func.apply(context, args);
+	        }, delay);
+	    };
+	}
+
+	exports.default = debounce;
+
+/***/ },
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -109,7 +143,7 @@
 
 	var _get2 = _interopRequireDefault(_get);
 
-	var _uniqueId = __webpack_require__(3);
+	var _uniqueId = __webpack_require__(4);
 
 	var _uniqueId2 = _interopRequireDefault(_uniqueId);
 
@@ -198,7 +232,7 @@
 	exports.default = Editor;
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -211,6 +245,53 @@
 	}
 
 	exports.default = uniqueId;
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _get = __webpack_require__(1);
+
+	var _get2 = _interopRequireDefault(_get);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Filter = function () {
+	    function Filter() {
+	        _classCallCheck(this, Filter);
+	    }
+
+	    _createClass(Filter, [{
+	        key: 'getValue',
+	        value: function getValue(e) {
+	            var divs = Array.from(document.querySelectorAll('.gallery li'));
+	            var value = (0, _get2.default)('filter').value;
+	            var parts = value.split(', ');
+
+	            divs.forEach(function (item, index) {
+	                if (item.children[1].style[parts[0].trim()] !== parts[1].trim()) {
+	                    item.classList.add('disappear');
+	                }
+	            });
+	        }
+	    }]);
+
+	    return Filter;
+	}();
+
+	;
+
+	exports.default = Filter;
 
 /***/ }
 /******/ ]);
