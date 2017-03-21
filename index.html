@@ -9,15 +9,6 @@
     <meta name="format-detection" content="telephone=no">
     <style type="text/css">
 
-    a[x-apple-data-detectors] {
-        color: inherit !important;
-        text-decoration: none !important;
-        font-size: inherit !important;
-        font-family: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-    }
-
     @media all and (max-width: 480px) {
 
         section[class="editor"],
@@ -54,12 +45,17 @@
                         <label>height: </label><input value="100" autocomplete='off' name="height">
                     </div>
                 </div>
-                <button type="button" class="place" id="save" name="button">Save</button>
+                <button type="button" class="save" id="save" name="button">Save</button>
             </form>
             <div class="output">
                 <div id="output" style="width: 100px; height: 100px; background-color: #000000; border-radius: 0;"></div>
             </div>
         </section>
+        <div id="nav" class="nav">
+            <form class="nav-form" id="nav-form" action="" accept-charset="UTF-8" method="get">
+                <input type="search" name="filter" id="filter" placeholder="name, value" autocomplete="off">
+            </form>
+        </div>
         <section class="gallery">
             <ul id="listGallery"></ul>
         </section>
