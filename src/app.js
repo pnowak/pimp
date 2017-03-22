@@ -16,10 +16,11 @@ const filterInput = get('filter');
 controlInputs.addEventListener('input', (e) => { editor.setStyle(e) }, false);
 saveButton.addEventListener('click', () => { editor.createDiv(), editor.resetStyle() }, false);
 gallery.addEventListener('click', (e) => { editor.closeDiv(e) }, false);
-filterInput.addEventListener('input', 
-	debounce(function() {
-	    return filter.getValue();
-	}, 2000)
+
+filterInput.addEventListener('input',
+  	debounce(function() {
+  	    filter.addClassDisappear();
+  	}, 1000)
 );
 
 document.addEventListener('DOMContentLoaded', () => { editor.getDataFromLocal() }, false);
