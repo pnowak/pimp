@@ -58,9 +58,16 @@ li {
 }
 
 .nav  {
-    width: 22%;
+    width: 60%;
     display: inline-block;
     margin: 1%;
+}
+
+.nav label,
+.nav input  {
+    display: inline-block;
+    padding-right: 10px;
+    
 }
 
 .close {
@@ -76,10 +83,6 @@ li {
     color: #ffffff;
 }
 
-fieldset {
-    border: none;
-}
-
 input {
     padding: 6px;
     color: #000000;
@@ -90,8 +93,7 @@ input {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-button.save,
-button.sort {
+button.save {
     font-size: 0.875em;  /* 14px / 16px */
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
