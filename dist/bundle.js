@@ -263,6 +263,10 @@
 
 	var _get2 = _interopRequireDefault(_get);
 
+	var _hexToRGB = __webpack_require__(6);
+
+	var _hexToRGB2 = _interopRequireDefault(_hexToRGB);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -282,8 +286,15 @@
 	            this.removeClassDisappear();
 
 	            if (value.length > 0) {
+	                var nameTrim = parts[0].trim();
+	                var valueTrim = parts[1].trim();
+
+	                if (valueTrim.startsWith('#')) {
+	                    valueTrim = (0, _hexToRGB2.default)(valueTrim);
+	                }
+
 	                divs.forEach(function (item, index) {
-	                    if (item.children[1].style[parts[0].trim()] !== parts[1].trim()) {
+	                    if (item.children[1].style[nameTrim].replace(/\s+/g, '') !== valueTrim) {
 	                        item.classList.add('disappear');
 	                    }
 	                });
@@ -308,6 +319,29 @@
 	;
 
 	exports.default = Filter;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	function hexToRGB(hex) {
+	    hex = hex.replace(/^#/, '');
+
+	    var num = parseInt(hex, 16);
+
+	    var r = num >> 16;
+	    var g = num >> 8 & 255;
+	    var b = num & 255;
+
+	    return 'rgb(' + r + ',' + g + ',' + b + ')';
+	}
+
+	exports.default = hexToRGB;
 
 /***/ }
 /******/ ]);
