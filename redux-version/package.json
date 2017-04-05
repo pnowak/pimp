@@ -1,0 +1,42 @@
+{
+  "name": "redux-version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint **/**.js",
+    "start": "webpack-dev-server --hot --progress",
+    "build": "NODE_ENV=production node node_modules/webpack/bin/webpack.js -p --progress"
+  },
+  "author": "pnowak",
+  "license": "MIT",
+  "dependencies": {
+    "redux": "3.6.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "6.3.3",
+    "babel-core": "6.4.5",
+    "babel-loader": "6.2.1",
+    "babel-plugin-rewire": "1.0.0-beta-5",
+    "babel-plugin-transform-runtime": "6.5.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-latest": "^6.16.0",
+    "babel-runtime": "6.6.1",
+    "babel-template": "6.6.5",
+    "bundle-loader": "0.5.4",
+    "clean-webpack-plugin": "0.1.6",
+    "expose-loader": "0.7.1",
+    "file-loader": "0.8.5",
+    "html-webpack-plugin": "1.7.0",
+    "style-loader": "0.13.1",
+    "url-loader": "0.5.7",
+    "eslint": "^3.8.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-loader": "^1.6.0",
+    "eslint-plugin-promise": "^3.3.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "webpack": "1.12.12",
+    "webpack-dev-server": "1.14.1",
+    "worker-loader": "0.7.0"
+  }
+}
