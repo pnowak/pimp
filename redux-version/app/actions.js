@@ -1,16 +1,20 @@
-import { ADD_RECT, REMOVE_RECT } from './consts';
+import { ADD_RECT, REMOVE_RECT, CHANGE_STYLE } from './consts';
 
-export function uniqueID() {
-    return 'ID_' + Math.random().toString(36).substr(2, 16);
-}
+var cuid = require('cuid');
 
-export const addRect = (id = uniqueID(), style) => ({
+export const addRect = (id = cuid(), style) => ({
 	type: ADD_RECT,
 	id,
-	//style
+	style
 });
 
 export const removeRect = (id) => ({
 	type: REMOVE_RECT,
 	id
+});
+
+export const changeStyle = (name, value) => ({
+	type: CHANGE_STYLE,
+	name,
+	value
 });
