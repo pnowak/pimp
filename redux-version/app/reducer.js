@@ -2,10 +2,18 @@ import { combineReducers } from 'redux';
 import { ADD_RECT, REMOVE_RECT } from './consts';
 
 const initialState = {
-    rects: []
+    rects: [],
+    styles: {
+        'width': '100px',
+        'height': '100px',
+        'background-color': '#000000',
+        'border-radius': 0
+    }
 };
 
 function rects(state = initialState, action) {
+    const { type, rect } = action;
+
     switch (action.type) {
         case ADD_RECT:
             return Object.assign({}, state, {
@@ -13,16 +21,16 @@ function rects(state = initialState, action) {
                     ...state,
                     {
                         id: action.id,
-                        style: action.style
+                        style: state.styles
                     }
                 ]
             });
         case REMOVE_RECT:
             return Object.assign({}, state, {
-                return rects.filter((rect, id) => {
+                [...state.rects.filter(id, rect) => {
                     return id !== rect.id;
-                });
-            });                
+                )]
+            });                 
         default:
             return state;
     }
