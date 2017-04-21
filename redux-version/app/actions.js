@@ -1,6 +1,6 @@
-import { ADD_RECT, REMOVE_RECT, CHANGE_RECT_STYLE } from './consts';
+import { ADD_RECT, REMOVE_RECT, CHANGE_RECT_STYLE, RESET_RECT_STYLE } from './consts';
 
-var cuid = require('cuid');
+const cuid = require('cuid');
 
 export const addRect = (id = cuid(), style) => ({
   	type: ADD_RECT,
@@ -13,6 +13,10 @@ export const removeRect = (id) => ({
 });
 
 export const changeStyle = (name, value) => ({
-	type: CHANGE_STYLE,
+	type: CHANGE_RECT_STYLE,
 	name = value 
+});
+
+export const resetStyle = () => ({
+	type: RESET_RECT_STYLE 
 });

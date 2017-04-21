@@ -1,4 +1,4 @@
-import { CHANGE_RECT_STYLE } from '.././consts';
+import { CHANGE_RECT_STYLE, RESET_RECT_STYLE } from '.././consts';
 
 const defaultStyles = {
     'width': '100px',
@@ -12,6 +12,10 @@ function styles(state = defaultStyles, action) {
         case CHANGE_RECT_STYLE:
             return Object.assign({}, state, {
                 state[action[name]]: action[value]
+            });   
+        case RESET_RECT_STYLE:
+            return Object.assign({}, state, {
+                defaultStyles
             });               
         default:
             return state;
