@@ -2,7 +2,10 @@ import { ADD_RECT, REMOVE_RECT, CHANGE_RECT_STYLE, RESET_RECT_STYLE } from './co
 
 const cuid = require('cuid');
 
-export const addRect = (id = cuid(), style) => ({
+export const addRect = ({
+  	id = cuid(),
+  	style = styles
+} = {}) => ({
   	type: ADD_RECT,
   	rect: { id, style }
 });
@@ -14,7 +17,7 @@ export const removeRect = (id) => ({
 
 export const changeStyle = (name, value) => ({
 	type: CHANGE_RECT_STYLE,
-	name = value 
+	styles: { styles[name] = value } 
 });
 
 export const resetStyle = () => ({
