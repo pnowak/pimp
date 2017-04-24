@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang=pl>
+<head>
+    <meta charset=utf-8>
+    <title>Pimp my rect</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href='style.css' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no">
+
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+</head>
+<body>
+    <section class="wrap">
+        <section class="editor">
+            <form action="/" method="get" id="form" class="form">
+                <div id="controls">
+                    <div class="opts">
+                      <label>background-color: </label><input type="color" value="#000000" autocomplete='off' name="backgroundColor">
+                    </div>
+                    <div class="opts">
+                        <label>border-radius: </label><input type="range" min="0" max="180" step="1" value="0" autocomplete='off' name="borderRadius">
+                    </div>
+                    <div class="opts">
+                        <label>width: </label><input value="100" autocomplete='off' name="width">
+                    </div>
+                    <div class="opts">
+                        <label>height: </label><input value="100" autocomplete='off' name="height">
+                    </div>
+                </div>
+                <button type="button" class="save" id="save" name="button">Save</button>
+            </form>
+            <div class="output">
+                <div id="output" style="width: 100px; height: 100px; background-color: #000000; border-radius: 0;"></div>
+            </div>
+        </section>
+        <section class="gallery">
+            <ul id="listGallery"></ul>
+        </section>
+    </section>
+    
+</body></html>
