@@ -14,7 +14,7 @@ function rects(state = [], action) {
             });
         case REMOVE_RECT:
             return Object.assign({}, state, {
-                [...state.rects.filter(id, rect) => {
+                [...rects.filter(id, rect) => {
                     return id !== rect.id;
                 )]
             });                 

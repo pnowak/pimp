@@ -14,7 +14,7 @@ export const removeRect = (id) => ({
 
 export const changeStyle = (name, value) => ({
 	type: CHANGE_RECT_STYLE,
-	styles: { name : value } 
+	styles: { [name] : value } 
 });
 
 export const resetStyle = () => ({

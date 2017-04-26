@@ -11,7 +11,7 @@ function styles(state = defaultStyles, action) {
     switch (action.type) {
         case CHANGE_RECT_STYLE:
             return Object.assign({}, state, {
-                state[action[name]]: action[value]
+                action[name]: action[value]
             });   
         case RESET_RECT_STYLE:
             return Object.assign({}, state, {
