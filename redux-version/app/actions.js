@@ -4,12 +4,12 @@ export const cuid = require('cuid');
 
 export const addRect = (id = cuid(), style) => ({
   	type: ADD_RECT,
-  	rects: { id, style }
+  	rects: [{ id, style }]
 });
 
 export const removeRect = (id) => ({
 	type: REMOVE_RECT,
-	rects: { id }
+	rects: [{ id }]
 });
 
 export const changeStyle = (name, value) => ({

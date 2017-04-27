@@ -1,4 +1,4 @@
-import *as actions from '../app/actions';
+import * as actions from '../app/actions';
 import * as types from '../app/consts';
 
 describe('actions', () => {
@@ -12,34 +12,21 @@ describe('actions', () => {
 		};
 	    const addRectAction = {
 	      	type: types.ADD_RECT,
-	      	rects: {
+	      	rects: [{
 		      	id: Id,
 		      	style: defaultStyles
-	      	}
+	      	}]
 	    };
 	    expect(actions.addRect(Id, defaultStyles)).toEqual(addRectAction);
   	});
 
   	it('should remove an rect - REMOVE_RECT', () => {
 	    const Id = actions.cuid();
-	    const defaultStyles = {
-		    'width': '100px',
-		    'height': '100px',
-		    'background-color': '#000000',
-		    'border-radius': 0
-		};
-	    const addRect = {
-	      	type: types.ADD_RECT,
-	      	rects: {
-		      	id: Id,
-		      	style: defaultStyles
-	      	}
-	    };
 	    const removeRectAction = {
 	      	type: types.REMOVE_RECT,
-	      	rects: {
+	      	rects: [{
 		      	id: Id
-	      	}
+	      	}]
 	    };
 	    expect(actions.removeRect(Id)).toEqual(removeRectAction);
   	});
@@ -60,4 +47,4 @@ describe('actions', () => {
 	    };
 	    expect(actions.resetStyle()).toEqual(resetStyleAction);
   	});
-})
+});

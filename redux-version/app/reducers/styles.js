@@ -11,11 +11,13 @@ function styles(state = defaultStyles, action) {
     switch (action.type) {
         case CHANGE_RECT_STYLE:
             return Object.assign({}, state, {
-                action[name]: action[value]
+                styles: {
+                    [name]: value
+                }
             });   
         case RESET_RECT_STYLE:
             return Object.assign({}, state, {
-                defaultStyles
+                styles: defaultStyles
             });               
         default:
             return state;
